@@ -30,6 +30,7 @@ export const signin = async (req, res, next) => {
       return next(errorHandler(401, "Wrong credentials!"));
     }
     const token = jwt.sign({ id: isUserValid._id }, process.env.JWT_SECRET);
+
     // if we want to return specific details then we have to destructure the data like this
     const { password: pass, ...rest } = isUserValid._doc;
     res

@@ -20,6 +20,7 @@ const app = express();
 app.use(express.json());
 
 app.listen(3000, () => {
+  debugger;
   console.log("Server is running on port 3000");
 });
 

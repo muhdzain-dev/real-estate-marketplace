@@ -107,6 +107,18 @@ function Profile() {
     }
   };
 
+  const handleSignout = async () => {
+    try {
+      const res = await fetch(`/api/auth/signout`, {
+        method: "GET",
+      });
+      const data = await res.json();
+      if (data.success === false) {
+        return;
+      }
+    } catch (error) {}
+  };
+
   return (
     <div className="p-6 max-w-lg mx-auto">
       <h1 className="text-3xl font-semibold text-center my-7"> Profile</h1>
@@ -175,7 +187,9 @@ function Profile() {
         >
           Delete Account
         </span>
-        <span className="text-red-700 cursor-pointer">Sign Out</span>
+        <span onClick={handleSignout} className="text-red-700 cursor-pointer">
+          Sign Out
+        </span>
       </div>
 
       <p className="text-red-700">{error ? error : ""}</p>
